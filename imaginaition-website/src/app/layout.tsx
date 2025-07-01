@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
-import ScrollToTop from "@/components/ui/scroll-to-top";
 import { AccessibilityProvider, SkipLinks } from "@/components/accessibility/AccessibilityEnhancements";
 import { StagewiseToolbar } from '@stagewise/toolbar-next';
 
@@ -166,7 +165,6 @@ export default function RootLayout({
         <AccessibilityProvider>
           <SkipLinks links={skipLinks} />
           {children}
-          <ScrollToTop />
         </AccessibilityProvider>
       </body>
     </html>

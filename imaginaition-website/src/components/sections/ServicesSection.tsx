@@ -53,20 +53,7 @@ export function ServicesSection() {
                 {/* Service Header - Mobile Responsive */}
                 <div className="flex flex-col space-y-6 sm:space-y-0 sm:flex-row sm:items-start sm:justify-between mb-6 sm:mb-8">
                   <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4">
-                      <Badge 
-                        variant="secondary" 
-                        className="bg-gradient-to-r from-blue-600/30 to-blue-500/30 text-blue-300 border-blue-400/30 px-3 sm:px-4 py-1.5 font-medium hover:from-blue-500/40 hover:to-blue-400/40 transition-all duration-300 text-sm sm:text-base w-fit"
-                      >
-                        ✨ Featured Service
-                      </Badge>
-                      <Badge 
-                        variant="outline" 
-                        className="text-gray-400 border-gray-600 px-2 sm:px-3 py-1 hover:border-gray-500 hover:text-gray-300 transition-all duration-300 text-xs sm:text-sm w-fit"
-                      >
-                        {index + 1} of {services.main.length}
-                      </Badge>
-                    </div>
+
                     <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-white mb-3 sm:mb-4 group-hover:text-blue-100 transition-colors duration-300 leading-tight">
                       {service.title}
                     </CardTitle>
@@ -83,19 +70,35 @@ export function ServicesSection() {
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-blue-600/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         
                         <div className="relative z-10">
-                          <div className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-blue-300 mb-1 group-hover:text-blue-200 transition-colors duration-300">
-                            {service.pricing.split(' ')[0]}
-                          </div>
-                          <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 leading-tight">
-                            {service.pricing.split(' ').slice(1).join(' ')}
-                          </div>
-                          
-                          {/* Premium badge */}
-                          <div className="absolute -top-2 sm:-top-3 -right-2 sm:-right-3">
-                            <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center animate-pulse">
-                              <span className="text-xs font-bold text-black">★</span>
-                            </div>
-                          </div>
+                          {service.id === 'ai-fashion-models' ? (
+                            <>
+                              <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 mb-1">
+                                Starts at
+                              </div>
+                              <div className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-blue-300 group-hover:text-blue-200 transition-colors duration-300">
+                                ₱99k
+                              </div>
+                            </>
+                          ) : service.id === 'product-photography' ? (
+                            <>
+                              <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 mb-1">
+                                Starts at
+                              </div>
+                              <div className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-blue-300 group-hover:text-blue-200 transition-colors duration-300">
+                                ₱59k
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold text-blue-300 mb-1 group-hover:text-blue-200 transition-colors duration-300">
+                                {service.pricing.split(' ')[0].replace(',', '')}
+                              </div>
+                              <div className="text-xs sm:text-sm text-gray-300 font-medium group-hover:text-gray-200 transition-colors duration-300 leading-tight">
+                                {service.pricing.split(' ').slice(1).join(' ')}
+                              </div>
+                            </>
+                          )}
+
                         </div>
                       </div>
                     </div>
@@ -217,20 +220,7 @@ export function ServicesSection() {
                   {/* Service Header - Mobile Responsive */}
                   <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6">
                     <div className="flex-1">
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                        <Badge 
-                          variant="outline" 
-                          className="bg-gradient-to-r from-purple-600/20 to-purple-500/20 text-purple-300 border-purple-400/30 px-3 sm:px-4 py-1.5 font-medium hover:from-purple-500/30 hover:to-purple-400/30 transition-all duration-300 text-sm sm:text-base w-fit"
-                        >
-                          {service.pricing}
-                        </Badge>
-                        <Badge 
-                          variant="outline" 
-                          className="text-gray-400 border-gray-600 px-2 sm:px-3 py-1 hover:border-gray-500 hover:text-gray-300 transition-all duration-300 text-xs sm:text-sm w-fit"
-                        >
-                          Additional {index + 1} of {services.additional.length}
-                        </Badge>
-                      </div>
+
                       <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-montserrat font-bold text-white mb-3 sm:mb-4 group-hover:text-gray-100 transition-colors duration-300 leading-tight">
                         {service.title}
                       </CardTitle>
