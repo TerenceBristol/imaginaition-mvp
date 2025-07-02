@@ -2,9 +2,8 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ThreeDPortfolioCarousel } from '@/components/ui/3d-carousel';
+import { ServicePortfolioSlideshow } from '@/components/ui/animated-slideshow';
 import { AccessibleHeading, Landmark } from '@/components/accessibility/AccessibilityEnhancements';
 import { siteConfig } from '@/data/site-config';
 
@@ -105,11 +104,11 @@ export function ServicesSection() {
                   </div>
                 </div>
 
-                {/* Portfolio Carousel with Mobile Enhancement */}
+                {/* Portfolio Slideshow with Mobile Enhancement */}
                 <div className="mb-6 sm:mb-8 relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-blue-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative z-10 transform group-hover:scale-[1.01] sm:group-hover:scale-[1.02] transition-transform duration-500">
-                    <ThreeDPortfolioCarousel items={service.examples} />
+                    <ServicePortfolioSlideshow items={service.examples} />
                   </div>
                 </div>
 
@@ -230,11 +229,11 @@ export function ServicesSection() {
                     </div>
                   </div>
 
-                  {/* Portfolio Carousel */}
+                  {/* Portfolio Slideshow */}
                   <div className="mb-4 sm:mb-6 relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="relative z-10 transform group-hover:scale-[1.005] sm:group-hover:scale-[1.01] transition-transform duration-500">
-                      <ThreeDPortfolioCarousel items={service.examples} />
+                      <ServicePortfolioSlideshow items={service.examples} />
                     </div>
                   </div>
 
