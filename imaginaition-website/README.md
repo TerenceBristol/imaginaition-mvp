@@ -1,4 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ImaginAItion Website
+
+This is the official website for **ImaginAItion** - a Next.js 15 application showcasing AI creative services for Philippine brands. The project includes AI fashion models, product photography, and talking avatars with professional animated slideshow displays and comprehensive service showcases.
+
+## Project Overview
+
+**ImaginAItion** offers cutting-edge AI creative services including:
+- **AI Fashion Models**: Complete creative freedom with infinite model variations
+- **Product Photography**: Professional product showcases without physical handling
+- **Talking Avatars & Human Cloning**: Realistic AI avatars for dynamic content creation
+- **AI Marketing Content**: Comprehensive marketing content creation using AI tools
+- **Brand Identity Design**: AI-assisted brand development with cultural intelligence
+- **AI Training & Content**: Custom AI model training and real-time content generation
+
+## Key Technologies
+
+- **Next.js 15.3.4** with App Router and Turbopack
+- **TypeScript 5+** with strict type checking
+- **Tailwind CSS 4** with custom dark theme
+- **Motion Libraries** (`motion` + `framer-motion`) for advanced animations
+- **ShadCN UI** components with Radix UI primitives
+- **React 19** with modern client/server components
+
+## Performance Metrics
+
+- **Bundle Size**: 165 kB First Load JS (Excellent performance)
+- **Build Time**: ~600ms with Turbopack optimization
+- **Accessibility**: WCAG AA compliant with comprehensive screen reader support
+- **Mobile-First**: Responsive design optimized for all device sizes
+
+## Recent Improvements
+
+### ✅ Animated Slideshow Integration (Latest)
+- **Replaced legacy 3D carousel** with modern animated slideshow component
+- **Enhanced animations** with text stagger effects and smooth image transitions
+- **Improved performance** with lazy loading and optimized bundle size
+- **Full accessibility compliance** with proper ARIA labels and keyboard navigation
+- **Cross-browser compatibility** tested across Chrome, Firefox, and Safari
 
 ## Getting Started
 

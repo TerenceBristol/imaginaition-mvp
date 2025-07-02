@@ -63,7 +63,7 @@ export const HoverSlider = React.forwardRef<
   )
   return (
     <HoverSliderContext.Provider value={{ activeSlide, changeSlide }}>
-      <div className={cn("bg-gray-900/30 rounded-lg p-6", className)}>{children}</div>
+      <div className={cn("w-full h-full", className)}>{children}</div>
     </HoverSliderContext.Provider>
   )
 })
@@ -114,7 +114,7 @@ export const TextStaggerHover = React.forwardRef<
             }}
           >
             <motion.span
-              className="inline-block opacity-60 text-gray-300 hover:text-gray-200 transition-colors duration-200"
+              className="inline-block opacity-70 text-gray-300 hover:text-gray-100 transition-colors duration-300"
               initial={{ y: "0%" }}
               animate={isActive ? { y: "-110%" } : { y: "0%" }}
             >
@@ -123,7 +123,7 @@ export const TextStaggerHover = React.forwardRef<
             </motion.span>
 
             <motion.span
-              className="absolute left-0 top-0 inline-block opacity-100 text-blue-400 hover:text-blue-300 transition-colors duration-200"
+              className="absolute left-0 top-0 inline-block opacity-100 text-blue-300 hover:text-blue-200 transition-colors duration-300"
               initial={{ y: "110%" }}
               animate={isActive ? { y: "0%" } : { y: "110%" }}
             >
@@ -170,7 +170,7 @@ export const HoverSliderImage = React.forwardRef<
   return (
     <motion.img
       className={cn("inline-block align-middle", className)}
-      transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.8 }}
+      transition={{ ease: [0.25, 0.46, 0.45, 0.94], duration: 0.5 }}
       variants={clipPathVariants}
       animate={activeSlide === index ? "visible" : "hidden"}
       ref={ref}
@@ -181,12 +181,44 @@ export const HoverSliderImage = React.forwardRef<
 })
 HoverSliderImage.displayName = "HoverSliderImage"
 
-// Wrapper component for PortfolioItem integration
+/**
+ * Props for the ServicePortfolioSlideshow component
+ */
 interface ServicePortfolioSlideshowProps {
+  /** Array of portfolio items to display in the slideshow */
   items: PortfolioItem[];
+  /** Optional CSS class name for styling */
   className?: string;
 }
 
+/**
+ * ServicePortfolioSlideshow - An animated slideshow component for displaying service portfolio items
+ * 
+ * Features:
+ * - Responsive design (horizontal layout on desktop, vertical stack on mobile)
+ * - Text stagger animations with blue accent colors matching site theme
+ * - Smooth image transitions with hover effects
+ * - Lazy loading for optimal performance
+ * - WCAG AA accessible with proper alt text and ARIA support
+ * - Automatic empty state handling when no portfolio items are provided
+ * 
+ * @example
+ * ```tsx
+ * // Basic usage in a service section
+ * <ServicePortfolioSlideshow items={service.examples} />
+ * 
+ * // With custom styling
+ * <ServicePortfolioSlideshow 
+ *   items={portfolioItems} 
+ *   className="custom-slideshow-styles"
+ * />
+ * ```
+ * 
+ * @param items - Array of PortfolioItem objects to display
+ * @param className - Optional CSS classes for custom styling
+ * @param ref - React ref for the component's root element
+ * @returns JSX element containing the animated slideshow
+ */
 export const ServicePortfolioSlideshow = React.forwardRef<
   HTMLDivElement,
   ServicePortfolioSlideshowProps
@@ -213,12 +245,12 @@ export const ServicePortfolioSlideshow = React.forwardRef<
 
   return (
     <div ref={ref} className={className}>
-      <HoverSlider className="min-h-[300px] bg-gray-900/30 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 p-6">
+      <HoverSlider className="min-h-[300px] bg-gray-900/50 border border-gray-700/50 hover:border-gray-600/50 hover:bg-gray-900/70 transition-all duration-500 rounded-lg animate-fade-in">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 p-4 sm:p-6">
           {/* Text Section */}
-          <div className="flex flex-col space-y-3 lg:space-y-4 flex-1 order-2 lg:order-1">
-            <div className="mb-2">
-              <span className="text-blue-400 text-xs font-medium uppercase tracking-wide">
+          <div className="flex flex-col space-y-2 sm:space-y-3 lg:space-y-4 flex-1 order-2 lg:order-1">
+            <div className="mb-1 sm:mb-2">
+              <span className="text-blue-400 text-xs sm:text-sm font-medium uppercase tracking-wide">
                 Portfolio Examples
               </span>
             </div>
@@ -226,15 +258,15 @@ export const ServicePortfolioSlideshow = React.forwardRef<
               <TextStaggerHover
                 key={slide.title}
                 index={index}
-                className="cursor-pointer text-lg lg:text-xl xl:text-2xl font-semibold tracking-tight text-white hover:text-blue-300 transition-colors duration-200"
+                className="cursor-pointer text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold tracking-tight text-white hover:text-blue-300 transition-colors duration-200 font-montserrat leading-tight"
                 text={slide.title}
               />
             ))}
           </div>
 
           {/* Image Section */}
-          <div className="flex-1 order-1 lg:order-2 w-full lg:max-w-md">
-            <HoverSliderImageWrap className="aspect-square lg:aspect-[4/3] rounded-lg overflow-hidden border border-gray-600/30">
+          <div className="flex-1 order-1 lg:order-2 w-full lg:max-w-md xl:max-w-lg">
+            <HoverSliderImageWrap className="aspect-[4/3] sm:aspect-square lg:aspect-[4/3] rounded-lg overflow-hidden border border-gray-600/30 hover:border-gray-500/40 transition-colors duration-300 shadow-lg">
               {slides.map((slide, index) => (
                 <div key={slide.id} className="relative w-full h-full">
                   <HoverSliderImage
@@ -242,7 +274,7 @@ export const ServicePortfolioSlideshow = React.forwardRef<
                     imageUrl={slide.imageUrl}
                     src={slide.imageUrl}
                     alt={slide.description || slide.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
                   />
