@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import { AccessibilityProvider, SkipLinks } from "@/components/accessibility/AccessibilityEnhancements";
-import { StagewiseToolbar } from '@stagewise/toolbar-next';
+import { StagewiseToolbar } from "@stagewise/toolbar-next";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",

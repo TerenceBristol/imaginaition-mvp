@@ -148,17 +148,6 @@ export function ContactSection() {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-blue-600/10 border border-blue-500/20 rounded-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                  <div className="text-blue-300 font-medium text-sm">
-                    We&apos;re committed to quick partnership discussions
-                  </div>
-                </div>
-                <p className="text-blue-200 text-sm mt-2">
-                  Response time: {contact.responseTime}
-                </p>
-              </div>
             </div>
           </div>
 

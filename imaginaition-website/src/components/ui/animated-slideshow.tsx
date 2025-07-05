@@ -3,16 +3,7 @@
 import * as React from "react"
 import { HTMLMotionProps, MotionConfig, motion } from "motion/react"
 import { cn } from "@/lib/utils"
-
-// Import the PortfolioItem type from the existing types
-interface PortfolioItem {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  serviceType: string;
-  isPlaceholder: boolean;
-}
+import { PortfolioItem } from "@/types"
 
 interface TextStaggerHoverProps {
   text: string
@@ -53,9 +44,9 @@ function useHoverSliderContext() {
 }
 
 export const HoverSlider = React.forwardRef<
-  HTMLElement,
-  React.HTMLAttributes<HTMLElement> & HoverSliderProps
->(({ children, className }) => {
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & HoverSliderProps
+>(({ children, className }, ref) => {
   const [activeSlide, setActiveSlide] = React.useState<number>(0)
   const changeSlide = React.useCallback(
     (index: number) => setActiveSlide(index),
@@ -63,7 +54,7 @@ export const HoverSlider = React.forwardRef<
   )
   return (
     <HoverSliderContext.Provider value={{ activeSlide, changeSlide }}>
-      <div className={cn("w-full h-full", className)}>{children}</div>
+      <div ref={ref} className={cn("w-full h-full", className)}>{children}</div>
     </HoverSliderContext.Provider>
   )
 })
@@ -72,9 +63,10 @@ HoverSlider.displayName = "HoverSlider"
 const WordStaggerHover = React.forwardRef<
   HTMLSpanElement,
   React.HTMLAttributes<HTMLSpanElement>
->(({ children }) => {
+>(({ children }, ref) => {
   return (
     <span
+      ref={ref}
       className={cn("relative inline-block origin-bottom overflow-hidden")}
     >
       {children}
